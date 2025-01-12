@@ -6,13 +6,9 @@ plugins {
 description = "Robocode Content"
 
 dependencies {
-    runtimeOnly(libs.eclipse.jdt)
-
-    // Robocode supports Kotlin out of the box
-    runtimeOnly(libs.kotlin.stdlib)
-
-    // BCEL is required for Codesize
-    runtimeOnly(libs.bcel)
+    runtimeOnly("org.eclipse.jdt:org.eclipse.jdt.core:3.32.0")
+    runtimeOnly("org.jetbrains.kotlin:kotlin-stdlib:1.8.10") // Robocode supports Kotlin out of the box
+    runtimeOnly("org.apache.bcel:bcel:6.7.0") // for Codesize
 }
 
 tasks {
@@ -35,8 +31,7 @@ tasks {
     register("copyCompilers", Copy::class) {
         dependsOn(configurations.runtimeClasspath)
         from({
-            configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") &&
-                    (it.name.contains("eclipse") || (it.name.startsWith("ecj")))}.map { it }
+            configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") && it.name.contains("eclipse") }.map { it }
         })
         into("../.sandbox/compilers")
     }

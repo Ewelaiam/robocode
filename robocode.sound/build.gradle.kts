@@ -6,7 +6,7 @@ plugins {
 dependencies {
     implementation(project(":robocode.api"))
     implementation(project(":robocode.core"))
-    implementation(libs.picocontainer)
+    implementation("org.picocontainer:picocontainer:2.15")
 }
 
 description = "Robocode Sound"
@@ -21,8 +21,7 @@ tasks {
         source = sourceSets["main"].java
         include("net/sf/robocode/sound/Module.java")
     }
-
     jar {
-        dependsOn(javadoc)
+        dependsOn("javadoc")
     }
 }

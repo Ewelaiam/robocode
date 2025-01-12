@@ -12,16 +12,14 @@ import net.sf.robocode.core.ContainerBase;
 import net.sf.robocode.io.FileUtil;
 import net.sf.robocode.io.Logger;
 import net.sf.robocode.manager.IVersionManagerBase;
+import static net.sf.robocode.io.Logger.logError;
+import static net.sf.robocode.io.Logger.logMessage;
 import net.sf.robocode.ui.dialog.ConsoleDialog;
 import net.sf.robocode.ui.dialog.WindowUtil;
-import net.sf.robocode.util.JavaVersion;
 
 import javax.swing.*;
 import java.io.*;
 import java.util.Objects;
-
-import static net.sf.robocode.io.Logger.logError;
-import static net.sf.robocode.io.Logger.logMessage;
 
 
 /**
@@ -103,27 +101,14 @@ public class RobocodeCompilerFactory {
 
 		if (javacOK) {
 			int rc = JOptionPane.showConfirmDialog(editor,
-					"Robocode has found a working javac (Java Compiler) on this system.\nWould you like to use it?\n" +
-							"\n" +
-							"If you click No, Robocode will use the build-in Eclipse Compiler for Java (ECJ),\n" +
-							"which requires Java 11 or newer.",
+					"Robocode has found a working javac (Java Compiler) on this system.\nWould you like to use it?\n"
+					+ "(If you click No, Robocode will use the build-in Eclipse Compiler for Java (ECJ))",
 					"Confirm javac",
 					JOptionPane.YES_NO_OPTION,
 					JOptionPane.QUESTION_MESSAGE);
 
 			if (rc == JOptionPane.NO_OPTION) {
 				javacOK = false;
-			}
-		}
-
-		if (!javacOK) {
-			if (JavaVersion.getJavaMajorVersion() < 11) {
-				JOptionPane.showMessageDialog(editor, "Eclipse Compiler for Java (ECJ) requires\n" +
-								"Java 11 or newer to run.\n" +
-								"Please upgrade Java 11 or newer.",
-						"Error", JOptionPane.ERROR_MESSAGE);
-
-				return false; // compilerOK = false
 			}
 		}
 		

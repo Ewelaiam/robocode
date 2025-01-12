@@ -1,8 +1,6 @@
 plugins {
-    `java-library`
+    id("io.github.gradle-nexus.publish-plugin") version "1.0.0"
     idea
-    alias(libs.plugins.nexus.publish)
-    alias(libs.plugins.ben.manes.versions)
 }
 
 description = "Robocode - Build the best - destroy the rest!"
@@ -10,20 +8,10 @@ description = "Robocode - Build the best - destroy the rest!"
 val ossrhUsername: String by project
 val ossrhPassword: String by project
 
-subprojects {
-    apply(plugin = "java")
-
-    java {
-        toolchain {
-            languageVersion.set(JavaLanguageVersion.of(8))
-        }
-    }
-}
-
 nexusPublishing {
     repositories {
         sonatype {
-            nexusUrl.set(uri("https://oss.sonatype.org/service/local/"))
+            nexusUrl.set(uri("https://oss.sonatype.org/service/local/"))//staging/deploy/maven2/
             snapshotRepositoryUrl.set(uri("https://oss.sonatype.org/content/repositories/snapshots/"))
             stagingProfileId.set("c7f511545ccf8")
             username.set(ossrhUsername)

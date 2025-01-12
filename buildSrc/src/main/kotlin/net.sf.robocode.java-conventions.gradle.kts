@@ -1,5 +1,3 @@
-group = "net.sf.robocode"
-
 plugins {
     java
     signing
@@ -16,17 +14,14 @@ repositories {
     }
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
-    }
+group = "net.sf.robocode"
+version = "1.9.5.1"
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+tasks.withType<JavaCompile>() {
+    options.encoding = "UTF-8"
 }
 
-tasks {
-    withType<JavaCompile>() {
-        options.encoding = "UTF-8"
-    }
-}
 
 publishing {
     publications {

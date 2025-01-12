@@ -15,7 +15,6 @@ import static robocode.util.Utils.normalRelativeAngleDegrees;
 
 import java.awt.*;
 
-
 /**
  * Corners - a sample robot by Mathew Nelson.
  * <p>

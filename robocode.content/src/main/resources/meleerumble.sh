@@ -12,7 +12,7 @@
 #----------------------------------------------------------
 
 # Used for setting Java options
-. ./set_java_options.sh
+./set_java_options.sh
 
 # Save present work directory (pwd)
 pwd=$(pwd)
@@ -22,7 +22,7 @@ cd "${0%/*}" || exit
 
 # Run MeleeRumble
 java \
-  -cp "libs/*" \
+  -cp "libs/*:robots" \
   -Xmx1024M \
   -Xdock:name=MeleeRumble \
   -Xdock:icon=roborumble.ico \

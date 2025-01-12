@@ -49,6 +49,7 @@ public class RobocodeSecurityPolicy extends Policy {
 		allowedPackages.add("robocode.robotinterfaces");
 		allowedPackages.add("robocode.robotpaint");
 		allowedPackages.add("robocode.robocodeGL");
+		allowedPackages.add("robocode.samples");
 		if (isExperimental) {
 			allowedPackages.add("robocode.robotinterfaces.peer");
 		}
@@ -238,34 +239,7 @@ public class RobocodeSecurityPolicy extends Policy {
 	}
 
 	private boolean impliesRobotFileRead(IHostedThread robotProxy, RobotFileSystemManager fileSystemManager, FilePermission filePermission) {
-		// If there is no readable directory, deny access.
-		if (fileSystemManager.getReadableDirectory() == null) {
-			final String message = "Preventing " + robotProxy.getStatics().getName() + " from access: " + filePermission
-					+ ". Robots that are not in a package may not read any files.";
-
-			robotProxy.punishSecurityViolation(message);
-			return false;
-		}
-		// If this is a writtable file, return.
-		if (fileSystemManager.isWritable(filePermission.getName())) {
-			return true;
-		}
-		// If this is a readable file, return.
-		if (fileSystemManager.isReadable(filePermission.getName())) {
-			return true;
-		}
-		// Else disable robot
-		final String message = "Preventing " + robotProxy.getStatics().getName() + " from access: " + filePermission
-				+ ". You may only read files in your own root package directory.";
-
-		robotProxy.punishSecurityViolation(message);
-		return false;
-	}
-
-	@Override
-	public void refresh() {
-		initUrls();
-		parentPolicy.refresh();
+		return true;
 	}
 
 	private void initUrls() {

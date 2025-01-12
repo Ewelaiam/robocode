@@ -6,9 +6,8 @@ plugins {
 dependencies {
     implementation(project(":robocode.api"))
     implementation(project(":robocode.core"))
-    implementation(libs.picocontainer)
-
-    testImplementation(testLibs.junit)
+    implementation("org.picocontainer:picocontainer:2.15")
+    testImplementation("junit:junit:4.13.2")
 }
 
 description = "Robocode Host"
@@ -23,8 +22,7 @@ tasks {
         source = sourceSets["main"].java
         include("net/sf/robocode/host/Module.java")
     }
-
     jar {
-        dependsOn(javadoc)
+        dependsOn("javadoc")
     }
 }

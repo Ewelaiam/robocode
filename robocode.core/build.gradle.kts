@@ -5,9 +5,8 @@ plugins {
 
 dependencies {
     implementation(project(":robocode.api"))
-    implementation(libs.picocontainer)
-
-    testImplementation(testLibs.junit)
+    implementation("org.picocontainer:picocontainer:2.15")
+    testImplementation("junit:junit:4.13.2")
 }
 
 description = "Robocode Core"
@@ -18,17 +17,16 @@ java {
 }
 
 tasks {
-    register<Copy>("copyVersion") {
+    register("copyVersion", Copy::class) {
         from("../") {
             include("versions.md")
         }
         into("build/resources/main/")
     }
-
     processResources{
         dependsOn("copyVersion")
-    }
 
+    }
     javadoc {
         source = sourceSets["main"].java
         include("net/sf/robocode/core/Module.java")

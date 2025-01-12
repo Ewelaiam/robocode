@@ -1,35 +1,9 @@
-## Version 1.9.5.4 (30-Sep-2024)
-
-### Bugfix
-
-* The built-in Eclipse Compiler for Java (ECJ) could not be found.
-
-## Version 1.9.5.3 (11-Sep-2024)
-
-### Bugfix
-
-* #66: Fixed an issue where Robocode would not start when executing the `robocode.sh` script for Linux and macOS due to
-  this error:
-  `java.lang.UnsupportedOperationException: The Security Manager is deprecated and will be removed in a future release`
-    * Thanks goes to @scientificworld for this fix. 😊
-
-### Improvements
-
-* Upgraded built-in Eclipse Compiler for Java to version 3.39
-
-## Version 1.9.5.2 (24-Oct-2023)
-
-### Bugfix
-
-* Fixed `Throwable: java.lang.LinkageError: loader constraint violation: when resolving method` issue in the
-  `RobotClassLoader`.
-
 ## Version 1.9.5.1 (30-Jul-2023)
 
-### Bugfix
+### Bugfix:
 
-* Fixed `ClassCastException` with `URLClassLoader` when accessing `ClassLoader.getSystemClassLoader()` on Java versions
-  newer than Java 8 and running with `-DNOSECURITY=true`.
+* Fixed `ClassCastException` with `URLClassLoader` when accessing `ClassLoader.getSystemClassLoader()` on Java version newer
+  than Java 8 and running with `-DNOSECURITY=true`.
 
 ### Improvements
 
@@ -39,7 +13,7 @@
 
 ## Version 1.9.5.0 (26-Feb-2023) Updated script files
 
-### Bugfix
+### Bugfix:
 
 * [Bug-418]: Excluded bots are removed from LiteRumble. Thanks to Xor for this fix! :)
 
@@ -770,9 +744,7 @@
   every battle.
     * Works only when "Enable replay recording" is enabled (is automatically set when enabling auto recording).
 * [Req-124]: Ability to save the properties file for robots in dev. path.
-*
-
-[Req-129]: `Rules.getBulletSpeed`.
+* [Req-129]: `Rules.getBulletSpeed`.
 
     * It is about keeping the bullet power within 0.1 - 3.0, even when input is lesser or greater than this valid range.
 
@@ -1107,8 +1079,7 @@ Thanks goes to Alex Schultz for keep finding bugs, but also helping out solving 
       security violation or they could not be loaded or started (meaning that they will not be allowed to run).
     * In addition, ALL security violations are always written out in both the main console and robot's console. A
       message will be written out in the main console
-      like
-      `xxx has caused a security violation. This robot has been banned and will not be allowed to participate in battles`.
+      like `xxx has caused a security violation. This robot has been banned and will not be allowed to participate in battles`.
 
 #### Painting
 
@@ -4185,3 +4156,5 @@ teams)
 [Req-159]: https://sourceforge.net/p/robocode/feature-requests/159/  (Fix overkilled garbage collection on static
 fields)
 [Req-160]: https://sourceforge.net/p/robocode/feature-requests/160/  (Fixed width font in console)
+
+[#35]: https://sourceforge.net/p/robocode/support-requests/35/  (DJL API in Robocode - getenv)
